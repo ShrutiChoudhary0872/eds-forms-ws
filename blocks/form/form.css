@@ -798,3 +798,11 @@ main .form form select[multiple] {
 main .form label {
 font-weight: var(--form-title-font-weight);
 }
+
+main .form form .text-wrapper > input {
+border: 1px solid #ff00f2;
+}
+
+main .form form .field-mobile-number > label {
+color: #a600ff;
+}
