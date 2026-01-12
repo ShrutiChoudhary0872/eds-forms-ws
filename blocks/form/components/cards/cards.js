@@ -25,26 +25,6 @@ import { subscribe } from '../../rules/index.js';
   // return fieldDiv;
 // }
 
-export default function decorate(element, fieldJson, container, formId) {
-  element.classList.add('card'); createCard(element, fieldJson.enum);
-  subscribe(element, formId, (fieldDiv, fieldModel) => {
-    fieldModel.subscribe((e) => {
-      const { payload } = e;
-      payload?.changes?.forEach((change) => {
-        if (change?.propertyName === 'enum') {
-          createCard(element, change.currentValue);
-        }
-      });
-    });
-    element.addEventListener('change', (e) => {
-      e.stopPropagation();
-      const value = fieldModel.enum?.[parseInt(e.target.dataset.index, 10)];
-      fieldModel.value = value.name;
-    });
-  });
-  return element;
-}
-
 function createCard(element, enums) {
   element.querySelectorAll('.radio-wrapper').forEach((radioWrapper, index) => {
     if (enums[index]?.name) {
